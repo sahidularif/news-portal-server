@@ -37,9 +37,10 @@ client.connect(err => {
 
     app.post('/post-article', (req, res) => {
         const file = req.files.file;
+        const author = req.body.author;
+        const category = req.body.category;
         const title = req.body.title;
-        const description = req.body.description;
-        const author = req.body.authorreq.body.author;
+        const article = req.body.article;
         const newImg = file.data;
         const encImg = newImg.toString('base64');
 
@@ -50,7 +51,7 @@ client.connect(err => {
         };
 
         articleCollection
-            .insertOne({ author, title, description, image })
+            .insertOne({ author, category, title, article, image })
             .then((result) => {
                 res.send(result.insertedCount > 0);
             });
