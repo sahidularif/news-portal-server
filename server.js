@@ -83,6 +83,13 @@ client.connect(err => {
         });
     });
 
+     //::::::::::::::::::::::: GET HERO SECTION ARTICLE ::::::::::::::::::::::
+     app.get('/hero-articles', (req, res) => {
+        articleCollection.find({}).limit(4).toArray((err, documents) => {
+            res.send(documents);
+        });
+    });
+
 });
 
 // Root:
