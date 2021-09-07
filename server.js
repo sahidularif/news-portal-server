@@ -77,7 +77,7 @@ client.connect(err => {
     })
 
     //::::::::::::::::::::::: GET ALL ARTICLE ::::::::::::::::::::::
-    app.get('/reviews', (req, res) => {
+    app.get('/articles', (req, res) => {
         feedbackCollection.find({}).toArray((err, documents) => {
             res.send(documents);
         });
