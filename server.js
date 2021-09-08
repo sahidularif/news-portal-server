@@ -29,8 +29,10 @@ const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 client.connect(err => {
+    //collections
     const articleCollection = client.db('truthspeech').collection('articles');
     const adminCollection = client.db('truthspeech').collection('admins');
+    const empCollection = client.db('truthspeech').collection('collection');
 
     // URSER ROUTES
     //:::::::::::::::::::::::::: ADD ARTICLE ::::::::::::::::::::::
@@ -97,7 +99,7 @@ app.get('/', (req, res) => {
     res.send(`
     <html>
     <head><title>The Truth Speech</title><style>h1{color:red;}</style></head>
-    <body><marquee><h1>THANKS FOR TRUTHSPEECH</h1></marquee></body>
+    <body><marquee><h1>Server Is Running On Port:4000</h1></marquee></body>
     </html>
     `);
 });
