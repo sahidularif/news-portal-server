@@ -38,22 +38,10 @@ client.connect(err => {
     //:::::::::::::::::::::::::: ADD ARTICLE ::::::::::::::::::::::
 
     app.post('/post-article', (req, res) => {
-        const file = req.files.file;
-        const author = req.body.author;
-        const category = req.body.category;
-        const title = req.body.title;
-        const article = req.body.article;
-        const newImg = file.data;
-        const encImg = newImg.toString('base64');
-
-        var image = {
-            contentType: file.mimetype,
-            size: file.size,
-            img: Buffer.from(encImg, 'base64'),
-        };
+        const article = req.body;
 
         articleCollection
-            .insertOne({ author, category, title, article, image })
+            .insertOne(article)
             .then((result) => {
                 res.send(result.insertedCount > 0);
             });
